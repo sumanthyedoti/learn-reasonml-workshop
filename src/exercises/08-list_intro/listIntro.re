@@ -20,8 +20,14 @@ let rec length = lst =>
   | [_, ...tl] => 1 + length(tl)
   };
 
+let () = Js.log(length([1, 2, 3, 4])); //4
+
 /* Write a function to add up the elements of a list by matching on it. */
-let rec sum = lst => failwith("For you to implement");
+let rec sum = lst =>
+  switch (lst) {
+  | [] => 0
+  | [hd, ...tl] => hd + sum(tl)
+  };
 
 /*
   The signature for the append operator is
@@ -31,11 +37,14 @@ let rec sum = lst => failwith("For you to implement");
  */
 let listAppend = (first, second) => first @ second;
 
+let () = Js.log(listAppend([1, 2], [3, 4]));
+
 /*
   The way you put something on the head to the list uses the same kind of
   syntax for matching on lists. This is called the spread syntax.
  */
 let newHead = (hd, rest) => [hd, ...rest];
+let () = Js.log(newHead(1, [2, 3, 4]));
 
 Test.runAll([
   (sum([]) == 0, "sum"),

@@ -68,11 +68,11 @@ let floatFour = 4.;
   value of the last statement in that function.
  */
 /* let intAverage = (x, y) => failwith("For you to implement"); */
-let intAverage = (x, y) => failwith("For you to implement");
+let intAverage = (x, y) => (x + y) / 2;
 
 /* let floatAverage : (float, float) => float */
 /* let floatAverage = (x, y) => failwith("For you to implement"); */
-let floatAverage = (x, y) => failwith("For you to implement");
+let floatAverage = (x, y) => (x +. y) /. 2.;
 
 /*
   The following expression computes the average of 10 and 20:
@@ -104,7 +104,7 @@ let aBooleanFalse: bool = false;
   || for logical or
   !  for logical not
  */
-let () = assert (true || aBooleanFalse);
+let () = assert(true || aBooleanFalse);
 
 /*
   The [unit] type
@@ -143,8 +143,10 @@ let () = {
   In words: [equal] takes two [int]s and returns a [bool]. The following line
   is applying that function to two inputs, [5] and [int_average 5 5].
  */
+
 Test.runAll([
   (intAverage(5, 5) == 5, "int average"),
+  (intAverage(3, 4) == 3, "int average"),
   (floatAverage(5., 5.) == 5., "float average"),
   (floatAverage(5., 10.) == 7.5, "float average"),
 ]);

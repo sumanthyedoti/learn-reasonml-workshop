@@ -30,7 +30,7 @@ let anExample: person = {
  */
 let age: int = anExample.age;
 
-let () = assert (age == 22);
+let () = assert(age == 22);
 
 /* We can also match on records to get field information. */
 let print_info = ({firstName, lastName, age, numberOfCars}) => {
@@ -55,7 +55,7 @@ let print_name = ({firstName, lastName, age: _, numberOfCars: _}) => {
  */
 let addOneToAge = person => {...person, age: person.age + 1};
 
-let () = assert (23 == addOneToAge(anExample).age);
+let () = assert(23 == addOneToAge(anExample).age);
 
 /*
   Write a function that does different things for different people:
@@ -66,8 +66,14 @@ let () = assert (23 == addOneToAge(anExample).age);
 
   let modify_person : person -> person
  */
-let modifyPerson = (person: person) => failwith("For you to implement");
+let modifyPerson = (person: person) =>
+  if (person.firstName == "Jan") {
+    {...person, age: 30};
+  } else {
+    {...person, numberOfCars: person.numberOfCars + 6};
+  };
 
+/* Testing */
 module ForTesting = {
   let test_ex1: person = {
     firstName: "Jan",
